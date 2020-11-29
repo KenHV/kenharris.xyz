@@ -1,0 +1,369 @@
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  color: #bbb;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.5em;
+  padding: 1em;
+  margin: auto;
+  max-width: 52em;
+  background: #080808;
+}
+
+a {
+  color: #81a1c1;
+  text-decoration: none;
+}
+
+/* a:visited {
+  color: #f4ff7f;
+} */
+
+a:hover {
+  color: #555;
+  cursor: pointer;
+}
+
+a:active {
+  color: #0558ff;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:hover,
+a:active {
+  outline: 0;
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 255, 0.3);
+  color: #fff;
+}
+
+::selection {
+  background: rgba(0, 0, 255, 0.3);
+  color: #fff;
+}
+
+a::-moz-selection {
+  background: rgba(0, 0, 255, 0.3);
+  color: #f9ba52;
+}
+
+a::selection {
+  background: rgba(0, 0, 255, 0.3);
+  color: #f9ba52;
+}
+
+p {
+  margin: 1em 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: #eee;
+  line-height: 1em;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+h4 {
+  font-size: 0.9em;
+}
+
+h5 {
+  font-size: 0.9em;
+}
+
+h6 {
+  font-size: 0.9em;
+}
+
+blockquote {
+  color: #999999;
+  margin: 0;
+  padding-left: 3em;
+  border-left: 0.5em #111 solid;
+}
+
+hr {
+  display: block;
+  border: 0;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #111;
+  margin: 1em 0;
+  padding: 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: "Fira Code", monospace;
+  font-size: 0.98em;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #111;
+  padding: 10px 15px;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+ins {
+  background: #006;
+  color: #fff;
+  text-decoration: none;
+}
+
+mark {
+  background: #00f;
+  color: #fff;
+  font-style: italic;
+  font-weight: bold;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+ul,
+ol {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+}
+
+li p:last-child {
+  margin: 0;
+}
+
+dd {
+  margin: 0 0 0 2em;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td {
+  vertical-align: top;
+}
+
+@media only screen and (min-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  .logo {
+    max-height: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  .logo {
+    max-height: 40px;
+  }
+  article {
+    margin: 50px 0;
+  }
+}
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    max-width: 100%;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  hr {
+    height: 1px;
+    border: 0;
+    border-bottom: 1px solid black;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #666;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page :left {
+    margin: 15mm 20mm 15mm 10mm;
+  }
+
+  @page :right {
+    margin: 15mm 10mm 15mm 20mm;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+nav ul li {
+  /* This allow us to arrange list items in a row, without using float */
+  display: inline-block;
+  list-style-type: none;
+}
+/* Create a style for the first level items */
+nav > div > ul > li > a {
+  color: #81a1c1 !important;
+  display: block;
+  line-height: 2em;
+  padding: 0.5em 0em;
+  text-decoration: none;
+}
+
+nav > div.nav-right > ul > li > a {
+  padding: 0.5em 0.5em;
+}
+
+nav > div > ul > li > a:hover {
+  color: #555 !important;
+}
+.nav-left {
+  float: left;
+}
+
+.nav-left ul li {
+  float: left;
+}
+
+.nav-right ul li {
+  float: right;
+}
+.logo {
+  margin-right: 0.5em;
+}
+article img {
+  margin: 1em 0;
+}
+p.date {
+  font-size: 13px;
+  color: #999;
+}
+ul.articles {
+  list-style: none;
+  padding: 0;
+}
+#Articles {
+  margin-top: 2em;
+}
+footer {
+  font-size: 13px;
+  position: absolute;
+  bottom: 15px;
+  height: 60px; /* Height of the footer */
+}
