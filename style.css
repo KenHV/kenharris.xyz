@@ -363,7 +363,4 @@ ul.articles {
 }
 footer {
   font-size: 13px;
-  position: absolute;
-  bottom: 15px;
-  height: 60px; /* Height of the footer */
 }
