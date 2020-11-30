@@ -8,7 +8,7 @@ html {
 body {
   color: #bbb;
   font-family: "Open Sans", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5em;
   padding: 1em;
   margin: auto;
@@ -89,27 +89,27 @@ h6 {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.7em;
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 h4 {
-  font-size: 0.9em;
+  font-size: 1.4em;
 }
 
 h5 {
-  font-size: 0.9em;
+  font-size: 1.4em;
 }
 
 h6 {
-  font-size: 0.9em;
+  font-size: 1.4em;
 }
 
 blockquote {
@@ -133,7 +133,7 @@ code,
 kbd,
 samp {
   font-family: "Fira Code", monospace;
-  font-size: 0.98em;
+  font-size: 1em;
 }
 
 pre {
@@ -213,7 +213,7 @@ td {
 
 @media only screen and (min-width: 480px) {
   body {
-    font-size: 14px;
+    font-size: 16px;
   }
   .logo {
     max-height: 30px;
@@ -222,7 +222,7 @@ td {
 
 @media only screen and (min-width: 768px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
   .logo {
     max-height: 40px;
@@ -241,7 +241,7 @@ td {
   }
 
   body {
-    font-size: 12pt;
+    font-size: 14pt;
     max-width: 100%;
   }
 
@@ -351,7 +351,7 @@ article img {
   margin: 1em 0;
 }
 p.date {
-  font-size: 13px;
+  font-size: 16px;
   color: #999;
 }
 ul.articles {
@@ -362,5 +362,5 @@ ul.articles {
   margin-top: 2em;
 }
 footer {
-  font-size: 13px;
+  font-size: 12px;
 }
