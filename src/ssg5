@@ -253,9 +253,9 @@ render_article_list() {
 	base_url="$2"
 	items=""
 	for i in $1; do
-		if ! echo $i | grep -Eq "index|contact"; then
-			url="$i"
-			page_title=$(head -n 1 "$4/${i%\.html}.md" | cut -c 3-) 
+		if ! echo "$i" | grep -Eq "index|contact"; then
+            url=$(echo "$i" | sed 's/\.html$//')
+			page_title=$(head -n 1 "$4/${i%\.html}.md" | cut -c 3-)
 			item="<li><a href="\"${url}\"">${page_title}</a></li>"
 			items=$items$item
 		fi
@@ -281,3 +281,4 @@ render_sitemap() {
 }
 
 main "$@"
+
