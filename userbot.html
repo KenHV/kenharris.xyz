@@ -37,11 +37,11 @@
 
 <h3 id="Why%20do%20I%20need%20one?">Why do I need one?</h3>
 
-<p>A Telegram userbot helps you manage groups, sticker packs, your inbox; do quick web searches, download music, mirror files to your Google Drive, and hundreds of other commands. It&#39;s not an actual bot that has its own username like Miss Rose bot. Userbots run as a session of your own account, it responds to commands you give out, as you. For example, if I send <code>.currency 100 inr usd</code> in any group&#47;PM, the userbot will detect it, convert the currency from INR to USD, and will edit that message to give you the output in that message itself.</p>
+<p>A Telegram userbot helps you manage groups, sticker packs, your inbox; do quick web searches, download music, mirror files to your Google Drive, and hundreds of other commands. It&#8217;s not an actual bot that has its own username like Miss Rose bot. Userbots run as a session of your own account, it responds to commands you give out, as you. For example, if I send <code>.currency 100 inr usd</code> in any group&#47;PM, the userbot will detect it, convert the currency from INR to USD, and will edit that message to give you the output in that message itself.</p>
 
 <h3 id="Is%20it%20safe%20to%20use%20one?">Is it safe to use one?</h3>
 
-<p>The short answer is yes. The long answer is that it depends on your usage of the bot. There are certain commands that you must use with extreme caution, such as <code>.term</code>, <code>.exec</code> and <code>.eval</code>. These commands allow you to run snippets of code from the userbot&#39;s host. There is some basic protection applied to these commands but you&#39;ll have to check the code and make sure it&#39;s safe before using it. There are a few commands that spam Telegram&#39;s servers such as <code>.spam</code>, <code>.scam</code> and anything else that sends out messages&#47;edit in rapid succession. The bot or its devs are not responsible for your misuse of these commands, use them at your own discretion.</p>
+<p>The short answer is yes. The long answer is that it depends on your usage of the bot. There are certain commands that you must use with extreme caution, such as <code>.term</code>, <code>.exec</code> and <code>.eval</code>. These commands allow you to run snippets of code from the userbot&#8217;s host. There is some basic protection applied to these commands but you&#8217;ll have to check the code and make sure it&#8217;s safe before using it. There are a few commands that spam Telegram&#8217;s servers such as <code>.spam</code>, <code>.scam</code> and anything else that sends out messages&#47;edit in rapid succession. The bot or its devs are not responsible for your misuse of these commands, use them at your own discretion.</p>
 
 <h3 id="Where%20do%20I%20host%20it?">Where do I host it?</h3>
 
@@ -49,19 +49,19 @@
 
 <h3 id="Which%20bot%20do%20I%20use?">Which bot do I use?</h3>
 
-<p>I maintain a userbot called <a href="https://github.com/KenHV/KensurBot">KensurBot</a>, which has a few exclusive modules that I wrote, and is overall sane. As of writing, it supports 210 commands. I keep it up-to-date and I fix bugs relatively fast. You can use other userbots too, the procedure is mostly the same but I&#39;ll use my bot for this guide.</p>
+<p>I maintain a userbot called <a href="https://github.com/KenHV/KensurBot">KensurBot</a>, which has a few exclusive modules that I wrote, and is overall sane. As of writing, it supports 210 commands. I keep it up-to-date and I fix bugs relatively fast. You can use other userbots too, the procedure is mostly the same but I&#8217;ll use my bot for this guide.</p>
 
 <h3 id="What%20do%20I%20need?">What do I need?</h3>
 
-<p>First of all you&#39;ll need Telegram&#39;s API. To get your own API ID and API Hash, do this:</p>
+<p>First of all you&#8217;ll need Telegram&#8217;s API. To get your own API ID and API Hash, do this:</p>
 
 <ul>
 <li>Log in to your Telegram core: https:&#47;&#47;my.telegram.org. Depending on your country, you might need a VPN.</li>
-<li>Go to &#8216;API development tools&#8217; and fill out the form for creating an app (you can fill in anything, it doesn&#39;t matter).</li>
+<li>Go to &#8216;API development tools&#8217; and fill out the form for creating an app (you can fill in anything, it doesn&#8217;t matter).</li>
 <li>You will get basic addresses as well as the <code>api_id</code> and <code>api_hash</code> parameters required for user authorization.</li>
 </ul>
 
-<p>Next up, you&#39;ll need to generate a session string. This will allow your bot to login as <em>you</em>. Think of it as a separate device that&#39;s logged in to your account. I&#39;ve simplified this process, do this:</p>
+<p>Next up, you&#8217;ll need to generate a session string. This will allow your bot to login as <em>you</em>. Think of it as a separate device that&#8217;s logged in to your account. I&#8217;ve simplified this process, do this:</p>
 
 <ul>
 <li>Go to <a href="http://sessiongen.kenhv.repl.run">http:&#47;&#47;sessiongen.kenhv.repl.run</a> and click on <code>Run</code> at the top.</li>
@@ -73,15 +73,15 @@
 
 <p>Do <em>NOT</em> share this session string anywhere, as this is essentially a key that allows someone (or in our case, the userbot) to log in to your account.</p>
 
-<p>That&#39;s pretty much everything you need for getting the userbot up and running, there are other stuff that you might want in the future such as GDrive management, LastFM integration, and these will need their own credentials and API keys but that&#39;s out of the scope of this guide.</p>
+<p>That&#8217;s pretty much everything you need for getting the userbot up and running, there are other stuff that you might want in the future such as GDrive management, LastFM integration, and these will need their own credentials and API keys but that&#8217;s out of the scope of this guide.</p>
 
-<p>You&#39;ll need to make a separate group in your Telegram for the userbot to store its logs and other info.</p>
+<p>You&#8217;ll need to make a separate group in your Telegram for the userbot to store its logs and other info.</p>
 
 <ul>
 <li>Go to Telegram and create a group.</li>
 <li>Add <code>@MissRose_bot</code> to your group.</li>
 <li>Send <code>&#47;id</code> in the group, Rose will give you the Chat ID of your group.</li>
-<li>The Chat ID will have a <code>-</code> sign at the start, don&#39;t leave out the <code>-</code> sign.</li>
+<li>The Chat ID will have a <code>-</code> sign at the start, don&#8217;t leave out the <code>-</code> sign.</li>
 <li>This value is your <code>BOTLOG_CHATID</code>.</li>
 </ul>
 
@@ -93,16 +93,16 @@ Head to https:&#47;&#47;dashboard.heroku.com&#47;account and get your API key.</
 <p>Now that the hard part is done, the rest is pretty straightforward.</p>
 
 <ul>
-<li>Head to <a href="https://github.com/kenhv/kensurbot">KensurBot&#39;s GitHub repo</a> and click on <em>Deploy to Heroku</em> under the <em>Setting Up</em> section. Or just click <a href="https://heroku.com/deploy?template=https://github.com/KenHV/KensurBot/tree/sql-extended">here</a>. This will take you to Heroku&#39;s deploy page.</li>
+<li>Head to <a href="https://github.com/kenhv/kensurbot">KensurBot&#8217;s GitHub repo</a> and click on <em>Deploy to Heroku</em> under the <em>Setting Up</em> section. Or just click <a href="https://heroku.com/deploy?template=https://github.com/KenHV/KensurBot/tree/sql-extended">here</a>. This will take you to Heroku&#8217;s deploy page.</li>
 <li>Fill in the app name, you can put anything you want here. As for the region, choose whichever one is closest to your physical location.</li>
 <li>Fill in the <code>API_KEY</code> (API_ID), <code>API_HASH</code>, <code>SESSION_STRING</code>, <code>BOTLOG_CHATID</code> and <code>HEROKU_API_KEY</code> you got from the previous section.</li>
 <li>Copy the name of your app that you entered at the start to <code>HEROKU_APP_NAME</code> <em>as it is</em>.</li>
-<li>Set <code>ALIVE_NAME</code> to the name you want the userbot to display when you send <code>.alive</code> (don&#39;t worry you can change this all later at any time).</li>
+<li>Set <code>ALIVE_NAME</code> to the name you want the userbot to display when you send <code>.alive</code> (don&#8217;t worry you can change this all later at any time).</li>
 <li>Read through the rest of the config options and add&#47;change them if you need (like the above step you can change these at any time).</li>
 <li>Leave the logging options as they are (KensurBot has logging enabled by default).</li>
 <li>Click on <em>Deploy App</em> at the bottom of the page.</li>
 <li>If all goes well, you should see <em>Your app was successfully deployed</em>.</li>
-<li>Click on the <em>View</em> button.</li>
+<li>Click on the <em>Manage App</em> button.</li>
 <li>Go to <em>Resources</em> tab, and make sure the <em>worker</em> is on. If not, click on the pencil icon and turn it on and click <em>Confirm</em>.</li>
 <li>Click on the <em>More</em> button (above the tabs, and right next to <em>Open App</em> button), and select <em>View logs</em>.</li>
 <li>If all went well, you should see something like this at the bottom:
