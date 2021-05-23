@@ -7,31 +7,28 @@ html {
 
 body {
   color: #bbb;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
-  line-height: 1.5em;
+  line-height: 1.75;
   padding: 1em;
   margin: auto;
   max-width: 52em;
-  background: #080808;
+  background: #121212;
 }
 
 a {
-  color: #81a1c1;
+  color: #10b286;
   text-decoration: none;
+  font-weight: bold;
 }
 
-/* a:visited {
-  color: #f4ff7f;
-} */
-
 a:hover {
-  color: #555;
+  color: #1ceab2;
   cursor: pointer;
 }
 
 a:active {
-  color: #0558ff;
+  color: #1ceab2;
 }
 
 a:focus {
@@ -44,23 +41,23 @@ a:active {
 }
 
 ::-moz-selection {
-  background: rgba(0, 0, 255, 0.3);
+  background: #1a73e84c;
   color: #fff;
 }
 
 ::selection {
-  background: rgba(0, 0, 255, 0.3);
+  background: #1a73e84c;
   color: #fff;
 }
 
 a::-moz-selection {
-  background: rgba(0, 0, 255, 0.3);
-  color: #f9ba52;
+  background: #1a73e84c;
+  color: #1ceab2;
 }
 
 a::selection {
-  background: rgba(0, 0, 255, 0.3);
-  color: #f9ba52;
+  background: #1a73e84c;
+  color: #1ceab2;
 }
 
 p {
@@ -77,15 +74,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
-  color: #eee;
-  line-height: 1em;
-}
-
-h4,
-h5,
-h6 {
   font-weight: bold;
+  color: #eee;
+  line-height: 1.5em;
 }
 
 h1 {
@@ -105,11 +96,11 @@ h4 {
 }
 
 h5 {
-  font-size: 1.4em;
+  font-size: 1.3em;
 }
 
 h6 {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 blockquote {
@@ -319,7 +310,7 @@ nav ul li {
 }
 /* Create a style for the first level items */
 nav > div > ul > li > a {
-  color: #81a1c1 !important;
+  color: #10b286 !important;
   display: block;
   line-height: 2em;
   padding: 0.5em 0em;
