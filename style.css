@@ -9,7 +9,7 @@ body {
   color: #bbb;
   font-family: "Inter", sans-serif;
   font-size: 14px;
-  line-height: 1.75;
+  line-height: 1.75em;
   padding: 1em;
   margin: auto;
   max-width: 52em;
@@ -343,7 +343,7 @@ article img {
   margin: 1em 0;
 }
 p.date {
-  font-size: 16px;
+  font-size: 14px;
   color: #999;
 }
 ul.articles {
