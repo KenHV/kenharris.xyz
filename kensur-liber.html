@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <title>Ken Harris</title>
+  </head>
+
+  <body>
+    <nav class="menu">
+      <div class="nav-left">
+        <ul>
+          <li>
+            <a href="/"
+              ><img class="logo" src="favicon.png" alt="" />ken's site</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <ul>
+          <li><a href="mailto:yo@kenharris.xyz">mail</a></li>
+          <li><a href="https://github.com/kenhv">github</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <article>
+<h1 id="Kensur%20Kernel%20for%20Moto%20One%20Fusion+">Kensur Kernel for Moto One Fusion+</h1>
+
+<p class="date">July 17, 2021</p>
+
+<p><img src="images/Kensur-Kernel-Banner.jpeg#center" alt="Kensur Kernel" /></p>
+
+<p><strong>NOTE:</strong> Incremental updates will be published on the
+<a href="https://telegram.dog/KensurKernel">Telegram channel</a>.</p>
+
+<h2 id="r5%20Release%20Notes">r5 Release Notes</h2>
+
+<ul>
+<li>Based on latest R CAF tag with ACK (4.14.239) merged in</li>
+<li>Cleaned up debugging cruft added by Motorola</li>
+<li>Most features from previous releases have been included</li>
+<li>Scheduler optimizations based on Pixel patches (PELT) and further improvements</li>
+<li>Efficient boosting setup for smoother UX</li>
+<li>Massively improved RAM management (SLMK + zRAM + a bunch of backports)</li>
+<li>Undervolted GPU</li>
+<li>Removed inefficient CPU frequencies</li>
+<li>Optimized Unity-based games (eg: Genshin)</li>
+<li>Implemented Rapid GC for F2FS</li>
+<li>Lots of misc. improvements for better performance and battery</li>
+</ul>
+
+<h2 id="Companion%20Module">Companion Module</h2>
+
+<p>There are some changes that must be done in userspace to facilitate the kernel
+side changes that have been done in this custom kernel. I&#8217;ve packaged these
+tweaks into a Magisk module. While this is not mandatory, I <u><strong>strongly
+recommend that you install the module</strong></u> to take full advantage of several
+features and improvements such as zRAM, efficient boosts, and much more.</p>
+
+<h2 id="Compatibility">Compatibility</h2>
+
+<p>This release is based on R tag, so this <u><strong>won&#8217;t work on Q ROMs</strong></u>. PE+ 11
+is what I personally use and recommend. When Moto releases official R update for
+our device, r5 <em>should</em> be compatible with it.</p>
+
+<h2 id="Installation">Installation</h2>
+
+<ul>
+<li>Back up your <code>boot</code> and <code>dtbo</code> partitions. You can do this in two ways:
+
+<ul>
+<li>Use TWRP</li>
+<li>Connect your phone to your PC and run these ADB commands:<br>
+<code>adb pull &#47;dev&#47;block&#47;by-name&#47;boot_a boot.img</code><br>
+<code>adb pull &#47;dev&#47;block&#47;by-name&#47;dtbo_a dtbo.img</code><br> Replace _a with your
+current boot slot, which can be found by running this command in fastboot
+mode:<br> <code>fastboot getvar current-slot</code></li>
+</ul></li>
+<li>Flash the kernel ZIP from TWRP or using <code>adb sideload</code> on other recoveries.</li>
+<li>Flash the companion ZIP from Magisk Manager.</li>
+</ul>
+
+<h4 id="Reverting%20to%20stock%20kernel">Reverting to stock kernel</h4>
+
+<p>Restore your <code>boot</code> and <code>dtbo</code> backups. Depending on which method you chose, you
+can:</p>
+
+<ul>
+<li>Use TWRP</li>
+<li>Flash the images from fastboot via these commands:<br>
+<code>fastboot flash boot boot.img</code><br> <code>fastboot flash dtbo dtbo.img</code></li>
+</ul>
+
+<p>If you didn&#8217;t take a backup, you can dirty flash your ROM zip <u><strong>without</strong></u>
+wiping anything.</p>
+
+<h2 id="Download">Download</h2>
+
+<p>Kernel:
+<a href="https://github.com/KenHV/kensur_kernel_liber/releases/download/r5/Kensur-liber-4.14.239-af3280372e21.zip">Kensur-liber-4.14.239-af3280372e21.zip</a></p>
+
+<p>Companion Module:
+<a href="https://github.com/KenHV/kensur_kernel_liber/releases/download/r5/Kensur-Companion-28b6acc08a60.zip">Kensur-Companion-28b6acc08a60.zip</a></p>
+<footer>
+	<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></br>
+Created with a <a href="src/ssg5">slightly modified</a> version of <a href="https://www.romanzolotarev.com/ssg.html">ssg</a> by Roman Zolotarev</p>
+</footer>
+
+</body>
+</html>
