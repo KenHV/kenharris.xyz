@@ -270,7 +270,7 @@ render_article_list() {
             items="$(echo "$items\n$item")"
 		fi
 	done
-	sed -i '' -e "s|</article>|<ul class=\"articles\">${items}\n</ul></article>|g" "$3/index.html"
+	sed -i -e "s|</article>|<ul class=\"articles\">${items}\n</ul></article>|g" "$3/index.html"
 }
 
 main "$@"
