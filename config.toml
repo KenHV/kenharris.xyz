@@ -24,7 +24,7 @@ enableRobotsTXT = true
 
   # Show full page content in RSS feed items
   #(default is Description or Summary metadata in the front matter)
-  # rssFullText = true
+  rssFullText = true
 
 [languages]
   [languages.en]
@@ -54,9 +54,9 @@ enableRobotsTXT = true
 
     [languages.en.menu]
       [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/about"
+        identifier = "rss"
+        name = "RSS"
+        url = "/posts/index.xml"
     #  [[languages.en.menu.main]]
     #    identifier = "showcase"
     #    name = "Showcase"

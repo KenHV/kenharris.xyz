@@ -1,0 +1,78 @@
+.header__inner {
+  width: 965px;
+}
+
+.logo__cursor {
+  background: #84a4f0;
+}
+
+.footer__inner {
+  width: 965px;
+}
+
+.post {
+  max-width: 1000px;
+}
+
+.container {
+  text-align: left;
+}
+
+body {
+  font-size: 1.1rem;
+  line-height: 2.1rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  border-top-width: 1rem;
+  border-top-style: solid;
+  border-top-color: transparent;
+  border-bottom-width: 1rem;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+}
+
+h1 {
+  font-size: 2.725rem;
+}
+
+h2 {
+  font-size: 1.725rem;
+}
+
+h3 {
+  font-size: 1.775rem;
+}
+
+h4 {
+  font-size: 1.225rem;
+}
+
+@media (--phone) {
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1.225rem;
+  }
+}
+
+code,
+kbd,
+pre {
+  font-size: 1rem;
+}
