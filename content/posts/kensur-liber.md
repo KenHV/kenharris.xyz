@@ -2,6 +2,7 @@
 title: "Kensur Kernel for Moto One Fusion+"
 date: 2021-07-17T00:00:00+00:00
 draft: false
+description: "Custom kernel focussed on efficiency improving user experience."
 ---
 
 {{< image src="/img/kensur-liber.jpeg" alt="Kensur Kernel" position="center" style="border-radius: 8px;" >}}
@@ -49,18 +50,20 @@ flickers.
 ## Installation
 
 - Back up your `boot` and `dtbo` partitions. You can do this in two ways:
+
   - Use TWRP
   - Connect your phone to your PC and run these ADB commands:<
-  
+
     `adb pull /dev/block/by-name/boot_a boot.img`
 
     `adb pull /dev/block/by-name/dtbo_a dtbo.img`
-    
+
     Replace \_a with your
     current boot slot, which can be found by running this command in fastboot
     mode:
-    
+
     `fastboot getvar current-slot`
+
 - Flash the kernel ZIP from TWRP or using `adb sideload` on other recoveries.
 - Flash the companion ZIP from Magisk Manager.
 

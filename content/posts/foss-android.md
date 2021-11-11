@@ -2,6 +2,7 @@
 title: "Moving Away from Non-Free Software"
 date: 2021-05-23T00:00:00+00:00
 draft: false
+description: "The reality of switching to FOSS and a list of apps to help you do it."
 ---
 
 Smartphones are a crucial part of the modern-day. Chances are, you're reading

@@ -2,6 +2,7 @@
 title: "Setting Up a Telegram Userbot"
 date: 2020-11-30T00:00:00+00:00
 draft: false
+description: "Your own personal assistant in Telegram."
 ---
 
 ## Why do I need one?
