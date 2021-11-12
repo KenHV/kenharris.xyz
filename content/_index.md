@@ -1,5 +1,5 @@
 +++
-framed = false
+framed = true
 +++
 
 # Ken Harris
