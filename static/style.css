@@ -71,6 +71,14 @@ h4 {
   }
 }
 
+.archive h3 {
+  font-size: 1.375rem;
+}
+
+.archive {
+  font-size: 1rem;
+}
+
 code,
 kbd,
 pre {
