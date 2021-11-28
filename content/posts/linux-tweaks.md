@@ -241,7 +241,7 @@ which was in turn taken from the
 
 ## CPU Frequency Scaling
 
-Packages: `auto-cpufreq`
+Packages: `auto-cpufreq-git`
 
 [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq) intelligently scales
 CPU frequencies and supports both Intel and AMD CPUs. Installation is as simple
