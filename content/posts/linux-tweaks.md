@@ -109,7 +109,6 @@ Section "InputClass"
     Option "Tapping" "on"
     Option "ClickMethod" "clickfinger"
     Option "NaturalScrolling" "true"
-    Option "ScrollMethod" "edge"
     Option "AccelProfile" "adaptive"
     Option "TappingButtonMap" "lrm"
 EndSection
