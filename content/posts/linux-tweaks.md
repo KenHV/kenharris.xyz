@@ -7,6 +7,8 @@ description: "Tweaks for a better desktop Linux experience."
 
 {{< figure src="/img/arch-xfce-rice.webp" alt="XFCE Rice" position="center" style="border-radius: 10px;" caption="Think XFCE looks dated? Think again!" captionPosition="right" >}}
 
+Updated on: 20/01/2022
+
 This post started out as a note to keep track of the packages I installed in
 Arch Linux (BTW). Then I realised there's no comprehensive guide on setting up
 Arch after getting a working GUI/DE. This post aims to fill that role. I won't
@@ -23,13 +25,13 @@ the Arch Wiki. Only Intel and NVIDIA packages will be listed here.
 ## Table of Contents <!-- omit in toc -->
 
 - [Base Install](#base-install)
+- [Custom Kernel](#custom-kernel)
 - [GPU Drivers](#gpu-drivers)
   - [Hardware Acceleration in Firefox](#hardware-acceleration-in-firefox)
 - [Trackpad Gestures](#trackpad-gestures)
 - [Theming](#theming)
 - [Undervolting Intel CPUs](#undervolting-intel-cpus)
-- [zRAM](#zram)
-- [Out-Of-Memory Killer](#out-of-memory-killer)
+- [Zswap](#zswap)
 - [CPU Frequency Scaling](#cpu-frequency-scaling)
 - [Runtime Power Management](#runtime-power-management)
 - [I/O Scheduler](#io-scheduler)
@@ -42,7 +44,7 @@ The following packages will take care of the base system with
 [Zen kernel](https://liquorix.net/), XFCE, LightDM, NetworkManager and Pipewire:
 
 ```markup-templating
-base base-devel linux-zen linux-zen-headers linux-firmware intel-ucode btrfs-progs efibootmgr git
+base base-devel linux linux-headers linux-firmware intel-ucode btrfs-progs efibootmgr git
 sof-firmware pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber pavucontrol
 networkmanager network-manager-applet
 xorg xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings shared-mime-info-gnome noto-fonts noto-fonts-emoji noto-fonts-cjk
@@ -74,6 +76,29 @@ cd ~
 rm -rf ~/yay-bin
 ```
 
+## Custom Kernel
+
+There are various alternative Linux kernels available for Arch Linux in addition
+to the latest stable kernel. Arch Linux officially supports four kernels:
+
+- Stable kernel (default) - `linux`
+- Hardened kernel - `linux-hardened`
+- Longterm kernel - `linux-lts`
+- Zen kernel - `linux-zen`
+
+These officially supported kernels have prebuilt binaries in the official repos.
+Apart from these, there are a plethora of other custom kernels like XanMod, TKG,
+etc. These have to be compiled from the AUR.
+
+I maintain a custom kernel and offer prebuilt binaries as well, which you can
+find [here](https://github.com/KenHV/laptop_kernel/releases).
+
+If you're switching to a custom kernel, make sure to install the headers for it
+and use [DKMS](https://wiki.archlinux.org/title/Dynamic_Kernel_Module_Support)
+for your external kernel modules.
+
+Pick your poison!
+
 ## GPU Drivers
 
 - **Intel**: `mesa vulkan-intel intel-media-driver`
@@ -91,10 +116,9 @@ mode. For more info, refer to the
 
 Set the following flags in about:config:
 
+- `gfx.webrender.all`: _true_
 - `media.ffmpeg.vaapi.enabled`: _true_
-- `media.ffvpx.enabled`: _false_
-- `media.navigator.mediadatadecoder_vpx_enabled`: _true_
-- `media.rdd-vpx.enabled`: _false_
+- `media.rdd-ffmpeg.enabled`: _true_
 
 ## Trackpad Gestures
 
@@ -122,10 +146,6 @@ QT apps look bad out of the box with GTK DEs. To fix this, open `kvantum-qt5`
 and set a theme. Now open `qt5ct` and set Style to _kvantum_ and configure your
 fonts and icon themes.
 
-I use the Qogir theme, which is a fork of the now unmaintained Arc theme.
-
-Packages: `qogir-gtk-theme-git kvantum-theme-qogir-git qogir-icon-theme`
-
 ## Undervolting Intel CPUs
 
 **NOTE: This only applies for 4th to 10th gen Intel CPUs. For AMD and older
@@ -140,15 +160,14 @@ voltage is almost always higher than what's needed. Undervolting leads to a
 reduction in CPU temperatures, which then leads to less throttling, more
 performance, and a quieter machine. It also reduces battery consumption.
 
--100mV is a good place to start. Open `/etc/intel-undervolt.conf` and make these
+-80mV is a good place to start. Open `/etc/intel-undervolt.conf` and make these
 modifications:
 
 ```less
-undervolt 0 'CPU' -100
-undervolt 1 'GPU' -100
-undervolt 2 'CPU Cache' -100
-undervolt 3 'System Agent' -100
-undervolt 4 'Analog I/O' -100
+undervolt 0 'CPU' -80
+undervolt 1 'GPU' -80
+undervolt 2 'CPU Cache' -80
+undervolt 3 'System Agent' -80
 ```
 
 Now run `sudo intel-undervolt apply`. You can confirm it by running
@@ -157,102 +176,105 @@ current power consumption. To ensure system stability, run stress tests.
 
 Run `glmark2 & stress --cpu $(nproc --all) --io 2 --vm 2` and open your web
 browser, use it for a minute or two. If your system freezes, your CPU/GPU is not
-getting enough power. Force reboot and reduce your undervolt by 5mV (-100mV to
--95mV) and re-run the tests. Repeat till it's stable.
+getting enough power. Force reboot and reduce your undervolt by 5mV (-80mV to
+-75mV) and re-run the tests. Repeat till it's stable.
 
-You can also undervolt further if the system is fully stable at -100mV by
-increasing the undervolt in increments of 5mV (-100mV to -105mV). When your
-system eventually freezes, go back one step. I like to leave it at -100mV.
+You can also undervolt further if the system is fully stable at -80mV by
+increasing the undervolt in increments of 5mV (-80mV to -85mV). When your system
+eventually freezes, go back one step.
 
 Run `sudo systemctl enable --now intel-undervolt` to make the undervolt
 persistent.
 
-## zRAM
+## Zswap
 
-Packages: `zram-generator`
+Taken from the Arch Wiki:
 
-We're downloading more RAM, bois.
+Zswap is a kernel feature that provides a compressed RAM cache for swap pages.
+Pages which would otherwise be swapped out to disk are instead compressed and
+stored into a memory pool in RAM. Once the pool is full or the RAM is exhausted,
+the least recently used (LRU) page is decompressed and written to disk, as if it
+had not been intercepted. After the page has been decompressed into the swap
+cache, the compressed version in the pool can be freed.
 
-zRAM is essentially swap that lives in the RAM. RAM is exponentially faster than
-even modern nVMEs, allowing much faster swapping compared to storage backed
-swap. zRAM provides a compressed block device in RAM. It comes at a cost of CPU
-cycles due to compression, but modern CPUs and compression algorithms make this
-cost negligible.
+The difference compared to ZRAM is that zswap works in conjunction with a swap
+device while zram is a swap device in RAM that does not require a backing swap
+device.
 
-Open `/etc/systemd/zram-generator.conf` and paste the following content:
+If you don't already have a swap file/partition, create one. Zswap is enabled by
+default; it uses the _lz4_ compression algorithm. To switch to the _zstd_
+algorithm, add the following to your cmdline:
 
-```less
-[zram0]
-zram-size = min(ram / 2, 8192)
-compression-algorithm = zstd
 ```
-
-This creates a zRAM device that's 50% of your actual RAM capacity (capped at
-8GB) and sets _zstd_ as its compression algorithm. People usually go for _lz4_,
-but _zstd_ has seen many improvements recently and is a good option.
-
-## Out-Of-Memory Killer
-
-Desktop Linux sucks under high memory pressure. The system just freezes up for
-me at around 70% memory usage on the stock kernel. Zen makes this much better,
-and we can improve it further by setting up an OOM daemon. I use systemd-oomd.
-
-Run `sudo -E systemctl edit user@service` and copy the contents:
-
-```less
-[Service]
-ManagedOOMMemoryPressure=kill
-ManagedOOMMemoryPressureLimit=50%
+zswap.compressor=zstd
 ```
-
-Run `sudo -E systemctl edit user.slice` and copy the contents:
-
-```less
-[Slice]
-ManagedOOMSwap=kill
-```
-
-Append the following to `/etc/systemd/system.conf`:
-
-```less
-DefaultCPUAccounting=yes
-DefaultIOAccounting=yes
-DefaultMemoryAccounting=yes
-DefaultTasksAccounting=yes
-```
-
-Append the following to `/etc/systemd/oomd.conf`:
-
-```less
-[OOM]
-SwapUsedLimitPercent=90%
-DefaultMemoryPressureDurationSec=20s
-```
-
-Finally, run `sudo systemctl enable --now systemd-oomd` to enable the daemon.
-You can test it by running `systemd-run --user tail /dev/zero` and monitoring
-the memory usage using a resource monitor.
-
-The above configs were taken from this
-[Reddit post](https://old.reddit.com/r/archlinux/comments/mk2lg6/how_to_properly_configure_systemdoomd/gun3q2f/),
-which was in turn taken from the
-[Fedora defaults](https://fedoraproject.org/wiki/Changes/EnableSystemdOomd).
 
 ## CPU Frequency Scaling
 
-Packages: `auto-cpufreq-git`
+Packages: `power-profiles-daemon acpi`
 
-[auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq) intelligently scales
-CPU frequencies and supports both Intel and AMD CPUs. Installation is as simple
-as installing the package and enabling the service:
+[power-profiles-daemon](https://gitlab.freedesktop.org/hadess/power-profiles-daemon)
+offers to modify system behaviour based upon user-selected power profiles. There
+are 3 different power profiles, a "balanced" default mode, a "power-saver" mode,
+as well as a "performance" mode. Running `powerprofilesctl` shows the available
+modes and the active one. The profile can be changed by running
+`powerprofilesctl set <mode>`. To automate this, we'll use udev, a systemd
+service and a bash script.
+
+Save the following contents to a file:
 
 ```bash
-sudo systemctl enable --now auto-cpufreq
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    power_supply=$(acpi -a | cut -d' ' -f3 | cut -d- -f1)
+else
+    power_supply="$1"
+fi
+
+if [ "$power_supply" = "on" ]; then
+    powerprofilesctl set performance
+else
+    powerprofilesctl set power-saver
+fi
 ```
 
-The author of auto-cpufreq suggests not to use TLP along with it, but you could
-disable all CPU-related options in TLP and use both. I don't use TLP as it gives
-many issues for me such as Wi-Fi and audio.
+The above script switches to performance profile on AC and power-saver profile
+on battery. If you're on my custom kernel, Intel's performance p-state uses EPP
+32, which allows maximum performance to be achieved while also allowing the
+processor to enter the lowest frequency state.
+
+The udev rule doesn't get triggered on boot, so we'll use a systemd service to
+handle it.
+
+Create a file `/etc/systemd/system/pstate.service` and copy the following
+contents:
+
+```less
+[Unit]
+Description=P-State
+After=default.target
+Requires=default.target
+
+[Service]
+ExecStart=/path/to/script
+
+[Install]
+WantedBy=default.target
+```
+
+Replace `/path/to/script` with the actual path. Run
+`sudo systemctl enable --now pstate.service` to run the script on boot.
+
+Create a file `/etc/udev/rules.d/powersave.rules` and copy the following
+contents:
+
+```less
+SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="/usr/bin/bash /path/to/script off"
+SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="/usr/bin/bash /path/to/script on"
+```
+
+Like before, replace `/path/to/script` with the actual path.
 
 ## Runtime Power Management
 
@@ -280,7 +302,6 @@ After=hibernate.target
 After=hybrid-sleep.target
 
 [Service]
-Type=oneshot
 ExecStart=/usr/bin/bash -c "find /sys -regex '.*?power/control$' ! -path '*usb*' -exec bash -c 'echo on > {}; echo auto > {}' \\\;"
 
 [Install]
@@ -311,8 +332,6 @@ ACTION=="add|change", KERNEL=="sd[a-z]*", ATTR{queue/rotational}=="1", ATTR{queu
 ```
 
 Changes will be performed after a reboot or running `sudo udevadm trigger`.
-
-Zen kernel tunes I/O schedulers so there's no need to touch anything else.
 
 ## AUR Optimizations
 
