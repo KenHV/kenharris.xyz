@@ -1,0 +1,3 @@
+[submodule "themes/zola-hook"]
+	path = themes/zola-hook
+	url = https://github.com/KenHV/zola-hook.git
