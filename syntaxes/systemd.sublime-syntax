@@ -1,0 +1,18 @@
+%YAML 1.2
+---
+name: systemd
+file_extensions: [service]
+scope: source.c
+
+contexts:
+  main:
+    - match: '^([A-Za-z]+(?=([\=][\-]?)))'
+      scope: keyword.other
+    - match: '^\[[A-Za-z]+\]'
+      scope: entity.name.section
+    - match: '(\\\w)?'
+      scope: entity.name
+    - match: '\\'
+      scope: constant.character.escape
+    - match: '\#\w+'
+      scope: comment.number-sign
