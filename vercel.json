@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    {
+      "source": "/posts/:path*",
+      "destination": "/blog/:path*"
+    }
+  ],
   "rewrites": [
     {
       "source": "/count.js",
