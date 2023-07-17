@@ -23,5 +23,5 @@ extra_syntaxes_and_themes = ["syntaxes"]
 # Put all your custom variables here
 links = [
     { title = "GitHub", href = "https://github.com/KenHV" },
-    { title = "Mail", href = "mailto:yo@kenharris.xyz" },
+    { title = "Mail", href = "mailto:ken@kenharris.xyz" },
 ]

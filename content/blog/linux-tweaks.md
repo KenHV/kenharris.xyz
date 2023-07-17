@@ -5,7 +5,7 @@ draft: false
 description: "A repository of tweaks for Arch Linux."
 ---
 
-This post is intended to be a repository of tweaks for Arch Linux. It also assumes you already know how to set up Arch Linux on your machine.
+This post is intended to be a repository of tweaks for Arch Linux. You must know how to set up an Arch Linux install beforehand.
 
 Go through with the [Arch installation guide](https://wiki.archlinux.org/title/Installation_guide). I go with Ext4 for my partitions. Refer to [bytes-per-inode ratio](https://wiki.archlinux.org/title/Ext4#Bytes-per-inode_ratio) and [reserved block](https://wiki.archlinux.org/title/Ext4#Reserved_blocks) sections before creating your Ext4 partition. As for the kernel, just use `linux-zen`. Don't bother with all those super fancy sounding custom kernels you find out there. Once you finish the base install, boot into your new system.
 
